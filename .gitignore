@@ -70,4 +70,6 @@ examples/
 CHANGES.md
 EDGE_QUERY_USAGE.md
 
-.gitignore
+# Backup files
+openfoam-mcp-backup-*.tar.gz
+*.tar.gz
