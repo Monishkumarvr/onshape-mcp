@@ -15,6 +15,33 @@ An MCP (Model Context Protocol) server that enables AI agents like Claude to int
 - **Multi-Physics Support** (mold filling, solidification, heat transfer)
 - **Parallel Execution** support for faster simulations
 
+## ✨ Recent Updates
+
+### Real Physics-Based Analysis (Latest)
+
+The result analyzer has been completely rewritten with **real physics-based calculations**:
+
+- ✅ **Niyama Criterion** - Actual porosity prediction using temperature gradients and cooling rates
+- ✅ **OpenFOAM Field Parsing** - Direct parsing of temperature (T) and volume fraction (alpha) fields
+- ✅ **Parameter-Dependent Results** - Different inputs now produce different outputs (no more templated responses!)
+- ✅ **Comprehensive Testing** - Full test suite with mock OpenFOAM cases verifies calculations
+- ✅ **Diagnostic Tools** - Built-in health check to verify correct analyzer is active
+
+**Key Formula:** Niyama Criterion for porosity prediction:
+```
+Ny = G / √R
+where:
+  G = Temperature gradient (K/m)
+  R = Cooling rate (K/s)
+
+Ny < 0.5  → High porosity risk
+Ny > 1.0  → Low porosity risk
+```
+
+**For WSL2 users:** See [WSL2_SETUP.md](WSL2_SETUP.md) for environment configuration guide.
+
+**Verification:** Run `python tests/test_real_analyzer.py` to see real physics calculations in action.
+
 ## 📋 Prerequisites
 
 ### Required
